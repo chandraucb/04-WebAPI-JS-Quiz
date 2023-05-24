@@ -1,0 +1,68 @@
+/* Default style for all padding and border */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/* set variable at root tag for font colors */
+:root { 
+  --dark-font-color: #411f12;
+  --light-font-color: #c2bfb8;
+  background-color: var(--light-font-color);
+  color: var(--dark-font-color);
+}
+
+/* header style */
+.header {
+  padding: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width:  100vw;
+}
+/* inline block to align header elements*/
+.header * {
+  display: inline-block;
+}
+/* link underline */
+a {
+  color: var(--dark-font-color);
+  text-decoration: none;
+}
+/* set timer to right hand top corner */
+.timer-text {
+  float: right;
+}
+
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+
+  padding: 5%;
+}
+
+.content h1, p {
+  max-width: 60vw;
+  padding: 20px;
+}
+
+.button {
+  color: var(--light-font-color);
+  background-color: var(--dark-font-color);
+  padding: 5px;
+}
+
+#high-score-view {
+  display: none;
+}
+
+#quiz-view {
+  display: none;
+}
+
+#result-view {
+  display: none;
+}
+
