@@ -6,8 +6,8 @@
 }
 /* set variable at root tag for font colors */
 :root { 
-  --dark-font-color: #411f12;
-  --light-font-color: #c2bfb8;
+  --dark-font-color: #3a23a0;
+  --light-font-color: #f0f6f5;
   background-color: var(--light-font-color);
   color: var(--dark-font-color);
 }
@@ -38,12 +38,10 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-
-
   padding: 5%;
 }
 
-.content h1, p {
+.intro h1, p {
   max-width: 60vw;
   padding: 20px;
 }
@@ -54,15 +52,15 @@ a {
   padding: 5px;
 }
 
-#high-score-view {
+#high-score-section {
   display: none;
 }
 
-#quiz-view {
+#quiz-section {
   display: none;
 }
 
-#result-view {
+#result-section {
   display: none;
 }
 

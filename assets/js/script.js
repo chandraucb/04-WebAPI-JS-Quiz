@@ -1,15 +1,21 @@
 var viewHighScoreElement = document.getElementById('high-score')
-var highScorePage = document.getElementById('high-score-view')
-var introScorePage = document.getElementById('intro-view')
+var highScoreSection = document.getElementById('high-score-section')
+var introScoreSection = document.getElementById('intro-section')
+var quizSection = document.getElementById('quiz-section')
+var startQuiz = document.getElementById('startQuiz')
+var goBack = document.getElementById ('goBack')
 
-var goBack = document.getElementById ('goback')
+startQuiz.addEventListener('click',function(event){
+    introScoreSection.style.display = 'none'
+    quizSection.style.display = 'block'
+})
 
 goBack.addEventListener('click', function(event){
-    introScorePage.style.display = 'block'
-    highScorePage.style.display = 'none'
+    introScoreSection.style.display = 'block'
+    highScoreSection.style.display = 'none'
 })
 
 viewHighScoreElement.addEventListener('click',function(event){
-    introScorePage.style.display = 'none'
-    highScorePage.style.display = 'block'
+    introScoreSection.style.display = 'none'
+    highScoreSection.style.display = 'block'
 })

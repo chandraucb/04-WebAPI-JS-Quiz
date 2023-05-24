@@ -8,30 +8,46 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body>
+    <!--Header to show link for view high score section and timer count-->
     <header class="header">
       <a href="#" id="high-score" class="high-score">View high score</a>
-      
       <div class="timer-text">
-        <div>Time : </div>
+        <div>Time :</div>
         <div class="timer-count">0</div>
-      </div>     
+      </div>
     </header>
-
     <main>
+      <!-- Main content -->
       <section class="content">
-        <article id="intro-view" class="intro">
-          <h1>Coding Quiz Challenge</h1>
-          <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-          <button class="button">Start Quiz</button>
-        </article>
-        <article id="high-score-view" class="intro">
-          <h1>High score</h1>
-          <p>High Score for XYZ is 22</p>
-          <button id="goback"class="button">Go Back</button>
-          <button class="button">Clear High Scores</button>
-        </article>
+        <!-- Intro section for the quiz -->
+        <section id="intro-section">
+          <article class="intro">
+            <h1>Coding Quiz Challenge</h1>
+            <p>
+              Try to answer the following code-related questions within the time
+              limit. Keep in mind that incorrect answers will penalize your
+              score/time by ten seconds!
+            </p>
+            <button id="startQuiz" class="button">Start Quiz</button>
+          </article>
+        </section>
+        <section id="high-score-section">
+          <article class="intro">
+            <h1>High score</h1>
+            <p>High Score for XYZ is 22</p>
+            <button id="goBack" class="button">Go Back</button>
+            <button id="clearHighScores" class="button">Clear High Scores</button>
+          </article>
+        </section>
+        <section id="quiz-section">
+          <article class="intro">
+            <h1>Questions</h1>
+            <p>High Score for XYZ is 22</p>
+            <button id="goBack" class="button">Go Back</button>
+            <button id="clearHighScores" class="button">Clear High Scores</button>
+          </article>
+        </section>
       </section>
-
     </main>
     <script src="./assets/js/script.js"></script>
   </body>
