@@ -1,6 +1,6 @@
 var viewHighScoreElement = document.getElementById('high-score')
-var highScorePage = document.getElementById('high-score-page')
-var introScorePage = document.getElementById('intro1')
+var highScorePage = document.getElementById('high-score-view')
+var introScorePage = document.getElementById('intro-view')
 
 var goBack = document.getElementById ('goback')
 
