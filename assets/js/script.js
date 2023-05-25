@@ -24,6 +24,41 @@ function loadNextQuestion () {
             question : 'How do we write a comment in javascript?',
             choices : ['<!-- -->','//','#','$$'],
             answer : '//'
+        },
+        {
+            question : 'How are objects compared when they are checked with the strict equality operator?',
+            choices : ['The contents of the objects are compared','Their references are compared','Both A and B','None of the above'],
+            answer : 'Their references are compared'
+        },
+        {
+            question : 'What does … operator do in JS?',
+            choices : ['It is used to spread iterables to individual elements','It is used to define a datatype of undefined size','No such operator exists','None of the above'],
+            answer : 'It is used to spread iterables to individual elements'
+        },
+        {
+            question : 'How to stop an interval timer in Javascript?',
+            choices : ['clearInterval','clearTimer','intervalOver','None of the above'],
+            answer : 'clearInterval'
+        },
+        {
+            question : 'Which of the following are closures in Javascript?',
+            choices : ['Variables','Functions','Objects','All of the above'],
+            answer : 'All of the above'
+        },
+        {
+            question : 'Which function is used to serialize an object into a JSON string in Javascript?',
+            choices : ['parse()','stringify()','convert()','None of the above'],
+            answer : 'stringify()'
+        },
+        {
+            question : 'What is the output of print(NaN === NaN); ?',
+            choices : ['true','false','undefined','Error'],
+            answer : 'false'
+        },
+        {
+            question : 'What does the Javascript “debugger” statement do?',
+            choices : ['It will debug all the errors in the program at runtime','It acts as a breakpoint in a program','It will debug error in the current statement if any','All of the above'],
+            answer : 'It acts as a breakpoint in a program'
         }
     ]
 
