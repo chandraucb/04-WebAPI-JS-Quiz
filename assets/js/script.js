@@ -83,9 +83,9 @@ function loadResultSection () {
     var finalScore = document.getElementById('finalScore')
     finalScore.innerHTML="Your final score is " + currentScore
 
-    //initials input field keyup event listener
+    //initials input field focus event listener
     var initial = document.getElementById('inputInitial')
-    initial.addEventListener('keyup',function(){
+    initial.addEventListener('mouseover',function(){
         var result = document.getElementById('lastresult')
         if (result) {
             result.parentNode.removeChild(result)
@@ -194,6 +194,13 @@ function createUpdateQuizQuestion (question, choices, answer) {
         createButton.textContent = choices[index];;
         createButton.className = 'choice'    
         createButton.addEventListener('click' , selectAnswer)
+
+        createButton.addEventListener('mouseover',function(){
+            var result = document.getElementById('lastresult')
+            if (result) {
+                result.parentNode.removeChild(result)
+            }
+        })
 
         //Create list item to add the button
         const createLi = document.createElement('li')

@@ -45,19 +45,19 @@ a {
   max-width: 60vw;
   padding: 20px;
 }
-
+/* button setting for reverse color*/
 .button {
   color: var(--light-font-color);
   background-color: var(--dark-font-color);
   padding: 5px;
 }
-
+/* button setting for reverse color*/
 .choice {
   color: var(--light-font-color);
   background-color: var(--dark-font-color);
   padding: 5px;
 }
-
+/* align text*/
 .quiz {
   text-align: left;
 
@@ -89,6 +89,8 @@ a, div, p,h1,h2,button,input,label, li {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+/*button mouse over color change */
+button:hover{background-color:orange;}
 
 #high-score-section {
   display: none;
