@@ -1,13 +1,17 @@
+//Document sections
 var viewHighScoreNav = document.getElementById('high-score')
 var highScoreSection = document.getElementById('high-score-section')
 var introScoreSection = document.getElementById('intro-section')
 var quizSection = document.getElementById('quiz-section')
 var resultSection= document.getElementById('result-section')
+//Buttons
 var startQuiz = document.getElementById('startQuiz')
 var goBack = document.getElementById ('goBack')
+//Dynamic display contents
 var quizArticle = document.getElementById('quizArticle')
 var timerCount = document.getElementById('timerCount')
 
+//Score and timer variables
 var currentScore = 0
 var remainingTime = 30
 var remainQuestion = 5
@@ -66,7 +70,7 @@ const questions = [
         answer : 'It acts as a breakpoint in a program'
     }
 ]
-
+//To keep track of used questions
 var usedQuestionIndex = []
 
 // function to show result section with final score. 
@@ -79,9 +83,9 @@ function loadResultSection () {
     var finalScore = document.getElementById('finalScore')
     finalScore.innerHTML="Your final score is " + currentScore
 
-    //initial input field
+    //initials input field keyup event listener
     var initial = document.getElementById('inputInitial')
-    initial.addEventListener('keyDown',function(){
+    initial.addEventListener('keyup',function(){
         var result = document.getElementById('lastresult')
         if (result) {
             result.parentNode.removeChild(result)
@@ -112,7 +116,7 @@ function loadResultSection () {
     })
 }
 
-// call createUpdateQuizQuestion with next question
+// function to load next question, called from createUpdateQuizQuestion 
 function loadNextQuestion () {
 
     //No questions or if all questions used just return
@@ -207,7 +211,7 @@ function createUpdateQuizQuestion (question, choices, answer) {
 
 //function to load high score section, can be invoked from submit or header navigation for this section
 function loadHighScoreSection() {
-    //clear interval user jumps from quiz section
+    //clear interval if user jumps from quiz section
     clearInterval(intervalRef)
 
     introScoreSection.style.display = 'none'
@@ -217,9 +221,6 @@ function loadHighScoreSection() {
 
     //Hide header
     document.getElementsByClassName('header')[0].style.visibility='hidden'
-
-    //setInterval will decrement and clears the timer based on remainingTime
-    remainingTime = 1 
 
     //Create list item for scores from localstorage
     var highScoreList = document.getElementById('highScoreList')
@@ -235,9 +236,10 @@ function loadHighScoreSection() {
         }
     }
 
+    //clear high score event listener
     document.getElementById('clearHighScores').addEventListener('click',function(){
         localStorage.removeItem('highScoresList')
-        //Remove list item
+        //Remove list items
         while (highScoreList.children[0]) {
             highScoreList.removeChild(highScoreList.children[0])
         }
