@@ -67,11 +67,25 @@ ol {
   padding : 10px;
 }
 
-li {
-  padding : 1px;
+ul {
+  padding :10px;
+  list-style: none;
+ 
 }
 
-a, div, p,h1,h2,button,input,label {
+#highScoreList li {
+  border-style: solid;
+  background-color: antiquewhite;
+  text-align: left;
+  list-style-position: inside;
+  width: 60vw;
+}
+
+li {
+  padding : 2px;
+}
+
+a, div, p,h1,h2,button,input,label, li {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 

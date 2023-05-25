@@ -11,6 +11,7 @@ var timerCount = document.getElementById('timerCount')
 var currentScore = 0
 var remainingTime = 30
 var remainQuestion = 5
+var intervalRef=''
 
 //Array with list of questions with its choices and answer
 const questions = [
@@ -70,6 +71,9 @@ var usedQuestionIndex = []
 
 // function to show result section with final score. 
 function loadResultSection () {
+    
+    clearInterval(intervalRef)
+
     quizSection.style.display = 'none'
     resultSection.style.display = 'block'
     var finalScore = document.getElementById('finalScore')
@@ -77,7 +81,7 @@ function loadResultSection () {
 
     //initial input field
     var initial = document.getElementById('inputInitial')
-    initial.addEventListener('click',function(){
+    initial.addEventListener('keyDown',function(){
         var result = document.getElementById('lastresult')
         if (result) {
             result.parentNode.removeChild(result)
@@ -93,7 +97,18 @@ function loadResultSection () {
             alert('Please enter inital to save the score !!!')
             return
         }
-        localStorage.setItem(initial.value, currentScore)
+        var resultList = []
+
+        if (localStorage.getItem('highScoresList')) {
+            resultList = JSON.parse(localStorage.getItem('highScoresList'))
+        } 
+
+        var result = { initial: initial.value, score:currentScore}
+
+        resultList.push(result)
+
+        localStorage.setItem('highScoresList',JSON.stringify(resultList))
+        loadHighScoreSection()
     })
 }
 
@@ -125,7 +140,6 @@ function showResult(answer,parentElement) {
     createResultDiv.setAttribute('style', 'white-space: pre;');
     createResultDiv.textContent = '__________________________________________  \r\n' + answer
     parentElement.appendChild(createResultDiv)
-
 }
 
 /* function to create or update quiz questions and choices to quiz section article */
@@ -191,6 +205,45 @@ function createUpdateQuizQuestion (question, choices, answer) {
 
 }
 
+//function to load high score section, can be invoked from submit or header navigation for this section
+function loadHighScoreSection() {
+    //clear interval user jumps from quiz section
+    clearInterval(intervalRef)
+
+    introScoreSection.style.display = 'none'
+    quizSection.style.display = 'none'
+    resultSection.style.display = 'none'
+    highScoreSection.style.display = 'block'
+
+    //Hide header
+    document.getElementsByClassName('header')[0].style.visibility='hidden'
+
+    //setInterval will decrement and clears the timer based on remainingTime
+    remainingTime = 1 
+
+    //Create list item for scores from localstorage
+    var highScoreList = document.getElementById('highScoreList')
+    var highScoreResults = localStorage.getItem('highScoresList')
+
+    if (highScoreResults) {
+        var objResults = JSON.parse(highScoreResults)
+
+        for (let index = 0; index < objResults.length; index++) {
+            var createLi = document.createElement('li')
+            createLi.textContent = objResults[index].initial + ' - ' + objResults[index].score
+            highScoreList.appendChild(createLi)
+        }
+    }
+
+    document.getElementById('clearHighScores').addEventListener('click',function(){
+        localStorage.removeItem('highScoresList')
+        //Remove list item
+        while (highScoreList.children[0]) {
+            highScoreList.removeChild(highScoreList.children[0])
+        }
+    })
+}
+
 //Intro Section Start Quiz event listener 
 startQuiz.addEventListener('click',function(event){
     introScoreSection.style.display = 'none'
@@ -200,11 +253,12 @@ startQuiz.addEventListener('click',function(event){
 
     timerCount.textContent = remainingTime;
 
-    var intervalRef = setInterval (function () {
+    intervalRef = setInterval (function () {
         remainingTime-=1;
         timerCount.textContent = remainingTime;
         if (remainingTime <= 0) {
             clearInterval(intervalRef)
+            loadResultSection()
         }
     }, 1000)
 })
@@ -215,14 +269,7 @@ goBack.addEventListener('click', function(event){
 })
 
 //View High Score link navigation event listener 
-viewHighScoreNav.addEventListener('click',function(event){
-    introScoreSection.style.display = 'none'
-    quizSection.style.display = 'none'
-    resultSection.style.display = 'none'
-    highScoreSection.style.display = 'block'
-    //setInterval will decrement and clears the timer based on remainingTime
-    remainingTime = 1 
-})
+viewHighScoreNav.addEventListener('click',loadHighScoreSection)
 
 
 
