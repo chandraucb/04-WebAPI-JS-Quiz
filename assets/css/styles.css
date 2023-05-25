@@ -5,7 +5,7 @@
   margin: 0;
 }
 /* set variable at root tag for font colors */
-:root { 
+:root {
   --dark-font-color: #3a23a0;
   --light-font-color: #f0f6f5;
   background-color: var(--light-font-color);
@@ -15,8 +15,9 @@
 /* header style */
 .header {
   padding: 20px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  width:  100vw;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  width: 100vw;
 }
 /* inline block to align header elements*/
 .header * {
@@ -32,7 +33,6 @@ a {
   float: right;
 }
 
-
 .content {
   display: flex;
   align-items: center;
@@ -41,7 +41,8 @@ a {
   padding: 5%;
 }
 
-.intro h1, p {
+.intro h1,
+p {
   max-width: 60vw;
   padding: 20px;
 }
@@ -60,17 +61,15 @@ a {
 /* align text*/
 .quiz {
   text-align: left;
-
 }
 
 ol {
-  padding : 10px;
+  padding: 10px;
 }
 
 ul {
-  padding :10px;
+  padding: 10px;
   list-style: none;
- 
 }
 
 #highScoreList li {
@@ -82,15 +81,26 @@ ul {
 }
 
 li {
-  padding : 2px;
+  padding: 2px;
 }
 
-a, div, p,h1,h2,button,input,label, li {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+a,
+div,
+p,
+h1,
+h2,
+button,
+input,
+label,
+li {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*button mouse over color change */
-button:hover{background-color:orange;}
+button:hover {
+  background-color: orange;
+}
 
 #high-score-section {
   display: none;
@@ -103,4 +113,3 @@ button:hover{background-color:orange;}
 #result-section {
   display: none;
 }
-
