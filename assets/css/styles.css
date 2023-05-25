@@ -52,6 +52,25 @@ a {
   padding: 5px;
 }
 
+.choice {
+  color: var(--light-font-color);
+  background-color: var(--dark-font-color);
+  padding: 5px;
+}
+
+.quiz {
+  text-align: left;
+
+}
+
+ol {
+  padding : 10px;
+}
+
+li {
+  padding : 1px;
+}
+
 #high-score-section {
   display: none;
 }
