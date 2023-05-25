@@ -22,7 +22,7 @@
         <!-- Intro section for the quiz -->
         <section id="intro-section">
           <article class="intro">
-            <h1>Coding Quiz Challenge</h1>
+            <h2>Coding Quiz Challenge</h2>
             <p>
               Try to answer the following code-related questions within the time
               limit. Keep in mind that incorrect answers will penalize your
@@ -31,24 +31,26 @@
             <button id="startQuiz" class="button">Start Quiz</button>
           </article>
         </section>
+        <!-- High score section lists content from local storage -->
         <section id="high-score-section">
           <article class="intro">
-            <h1>High score</h1>
+            <h2>High score</h2>
             <p>High Score for XYZ is 22</p>
             <button id="goBack" class="button">Go Back</button>
             <button id="clearHighScores" class="button">Clear High Scores</button>
           </article>
         </section>
+        <!-- Quiz articles will be dynamically loaded-->
         <section id="quiz-section">
-          <article id="quizArticle" class="quiz">
-            
-          </article>
+          <article id="quizArticle" class="quiz"></article>
         </section>
+        <!-- Quiz result section -->
         <section id="result-section">
           <article id="resultDetails" class="results">
             <h2>All Done!</h2>
             <p id="finalScore"></p>
-            <input type="text" label="Enter Initials:"/>
+            <label for="inputInitial">Enter Initials: </label>
+            <input id="inputInitial" type="text"/>
             <button id="submit" class="button">Submit</button>
           </article>
         </section>

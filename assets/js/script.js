@@ -68,12 +68,33 @@ const questions = [
 
 var usedQuestionIndex = []
 
+// function to show result section with final score. 
 function loadResultSection () {
-
-    var finalScore = document.getElementById('finalScore')
     quizSection.style.display = 'none'
     resultSection.style.display = 'block'
-    finalScore.textNode="Your final score is " + currentScore
+    var finalScore = document.getElementById('finalScore')
+    finalScore.innerHTML="Your final score is " + currentScore
+
+    //initial input field
+    var initial = document.getElementById('inputInitial')
+    initial.addEventListener('click',function(){
+        var result = document.getElementById('lastresult')
+        if (result) {
+            result.parentNode.removeChild(result)
+        }
+    })
+
+    //Submit Button on click event listener
+    var submitButton = document.getElementById('submit')
+    submitButton.style.lineHeight = '8px'
+    submitButton.addEventListener('click', function() {      
+        
+        if (!initial.value) {
+            alert('Please enter inital to save the score !!!')
+            return
+        }
+        localStorage.setItem(initial.value, currentScore)
+    })
 }
 
 // call createUpdateQuizQuestion with next question
@@ -86,24 +107,21 @@ function loadNextQuestion () {
     //random index selector
     var randNum = Math.floor(Math.random() * questions.length);
 
-    //Remove selected question to avoid repeats
+    //Select random index to show questions
     while (usedQuestionIndex.includes(randNum) ) {
         randNum = Math.floor(Math.random() * questions.length);
     }
+    //keep track of questions shown
     usedQuestionIndex.push(randNum)
-   
-    var question = questions[randNum]
-
-    
-    //questions.splice(randNum,1)
 
     // create question article with selected index question object 
-    createUpdateQuizQuestion ( question.question, question.choices, question.answer )
+    createUpdateQuizQuestion ( questions[randNum].question, questions[randNum].choices, questions[randNum].answer )
 }
 
 // display result of last answered question
 function showResult(answer,parentElement) {
     var createResultDiv = document.createElement('div')
+    createResultDiv.setAttribute('id', 'lastresult');
     createResultDiv.setAttribute('style', 'white-space: pre;');
     createResultDiv.textContent = '__________________________________________  \r\n' + answer
     parentElement.appendChild(createResultDiv)
@@ -129,7 +147,7 @@ function createUpdateQuizQuestion (question, choices, answer) {
         var result = "Wrong!"
         if (event.target.textContent === answer) {
             //increment current score if correct
-            currentScore=+2
+            currentScore+=2
             result = "Correct!"
         } else {
             //penalize for incorrect answer 
@@ -145,8 +163,6 @@ function createUpdateQuizQuestion (question, choices, answer) {
             loadResultSection()
             showResult(result, resultSection)
         }
-        
-        
     }
 
     //OL element to show answer choices
@@ -179,25 +195,21 @@ function createUpdateQuizQuestion (question, choices, answer) {
 startQuiz.addEventListener('click',function(event){
     introScoreSection.style.display = 'none'
     quizSection.style.display = 'block'
-    
-    loadNextQuestion () // loads next question be to answered
+    //loads next question be to answered
+    loadNextQuestion () 
 
     timerCount.textContent = remainingTime;
 
     var intervalRef = setInterval (function () {
-
-        remainingTime--;
-
+        remainingTime-=1;
         timerCount.textContent = remainingTime;
-
         if (remainingTime <= 0) {
             clearInterval(intervalRef)
         }
-
     }, 1000)
 })
 
-//View High Score section Go Back event listener 
+//View High Score section Go Back event listener, resets the page 
 goBack.addEventListener('click', function(event){
     location.reload();
 })
@@ -206,6 +218,7 @@ goBack.addEventListener('click', function(event){
 viewHighScoreNav.addEventListener('click',function(event){
     introScoreSection.style.display = 'none'
     quizSection.style.display = 'none'
+    resultSection.style.display = 'none'
     highScoreSection.style.display = 'block'
     //setInterval will decrement and clears the timer based on remainingTime
     remainingTime = 1 
