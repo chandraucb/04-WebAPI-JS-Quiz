@@ -71,6 +71,11 @@ li {
   padding : 1px;
 }
 
+a, div, p,h1,h2,button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
 #high-score-section {
   display: none;
 }
